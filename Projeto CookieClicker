@@ -1,0 +1,10 @@
+mport {useState} from 'react';
+import {View, Text, touchablleOpacity, styleSheet} from 'react-native'
+export default function App() {
+const [cookies, setCookies] = UseState (0);
+const handle click = () => {
+  setCookies(cookies + 1);
+);
+return (
+  <Viewvstyle={styles.container}>
+    <Text style={styles.text}>Cookies: {cookies}</Text>
