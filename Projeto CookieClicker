@@ -64,8 +64,21 @@ const [lastLongin,setLastLogin] = useState(new Date().toDateString());
     });
   }, [cookies, autoClickers, clickPower]);
 
-  return (
-    <View style={styles.container}>
+  useEffect(() => {
+const interval = setInterval(() => {
+  const today = new Date().toDateString();
+  if (today !== lastLogin) {
+    setLastLogin(today);
+    setDailyProgress(0);
+    setDailyGoal(Math.floor(Math.random() * 100) + 50);
+  };
+    if (dailyProgress >= dailyGoal) {
+      Alert.alert('Parabéns!', 'Você completou a meta diária!');
+      setDailyProgress(0);
+    };
+  });
+return (
+<View style={styles.container}>
       <Text style={styles.text}>Cookies: {cookies}</Text>
       <Text style={styles.text}>Poder de Clique: {clickPower}</Text>
       <Text style={styles.text}>Auto-Clickers: {autoClickers}</Text>
