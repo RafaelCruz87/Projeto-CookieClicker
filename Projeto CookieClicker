@@ -1,3 +1,5 @@
+// Aula 11 - Sistema de Missões e Conquistas
+
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList, Alert } from 'react-native';
 
@@ -7,10 +9,9 @@ export default function App() {
   const [autoClickers, setAutoClickers] = useState(0);
   const [achievements, setAchievements] = useState([]);
 
-
-
-
-const  [dailyGoal,
+const [dailyGoal,setDailyGoal] = useState(100);
+const [dailyProgress,setDailyProgress] -useState(0)
+const [lastLongin,setLastLogin] = useState(new Date().toDateString());
   // Lista de conquistas baseadas em metas de cookies
   const achievementsList = [
     { id: 1, name: 'Primeiros 10 Cookies!', goal: 10 },
