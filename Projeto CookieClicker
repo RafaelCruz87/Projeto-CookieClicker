@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList, Alert } from 'react-native';
+import {Audio} from 'expo-av'; 
 
 export default function App() {
   const [cookies, setCookies] = useState(0);
@@ -12,6 +13,10 @@ export default function App() {
 const [dailyGoal,setDailyGoal] = useState(100);
 const [dailyProgress,setDailyProgress] -useState(0)
 const [lastLongin,setLastLogin] = useState(new Date().toDateString());
+
+const [sound,setSound] = useState();
+
+
   // Lista de conquistas baseadas em metas de cookies
   const achievementsList = [
     { id: 1, name: 'Primeiros 10 Cookies!', goal: 10 },
@@ -20,6 +25,7 @@ const [lastLongin,setLastLogin] = useState(new Date().toDateString());
     { id: 4, name: '5 Auto-Clickers!', goal: 5, type: 'autoClicker' },
     { id: 5, name: 'Clique Poderoso 10+', goal: 10, type: 'clickPower' },
   ];
+
 
   const handleClick = () => {
     setCookies(cookies + clickPower);
