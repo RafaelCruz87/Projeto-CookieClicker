@@ -16,7 +16,8 @@ const [lastLongin,setLastLogin] = useState(new Date().toDateString());
 
 const [sound,setSound] = useState();
 
-
+const scale = useRef(new Animated(1)).current;
+++±¡1
   // Lista de conquistas baseadas em metas de cookies
   const achievementsList = [
     { id: 1, name: 'Primeiros 10 Cookies!', goal: 10 },
@@ -26,10 +27,27 @@ const [sound,setSound] = useState();
     { id: 5, name: 'Clique Poderoso 10+', goal: 10, type: 'clickPower' },
   ];
 
+async function playSound() {
+const {sound} = await Audio.Sound.createAsync(
+require('./assets/click-sound.mp3'l
+);
+useEffect(() => {
+setSound(sound);
+return sound ? () =>
+sound.unloadAsync() : undefined;
+}, [sound])
+
+const pulseAnimation = () => {
+Animated.sequence([
+Animated.timing(scale, {
+toValue)p
+
 
   const handleClick = () => {
     setCookies(cookies + clickPower);
   };
+    setDailyProgress(prev => prev + clickPower);
+
 
   const buyUpgrade = () => {
     if (cookies >= 10) {
