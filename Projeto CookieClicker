@@ -40,13 +40,17 @@ sound.unloadAsync() : undefined;
 const pulseAnimation = () => {
 Animated.sequence([
 Animated.timing(scale, {
-toValue)p
+toValue: 1.2,
+duration: 100,
+useNativeDriver: true,
+})
+Animated.timing(scaleq0⁰lpp
 
 
   const handleClick = () => {
     setCookies(cookies + clickPower);
   };
-    setDailyProgress(prev => prev + clickPower);
+    setDailyProgress(prev => prev +p clickPower);
 
 
   const buyUpgrade = () => {
