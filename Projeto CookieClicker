@@ -1,57 +1,41 @@
-// Aula 11 - Sistema de Missões e Conquistas
-
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, FlatList, Alert } from 'react-native';
-import {Audio} from 'expo-av'; 
+import { View, Text, TouchableOpacity, StyleSheet, FlatList, Alert, Animated,image } from 'react-native';
+import{Áudio} from 'expo-av' ;
 
 export default function App() {
+  
   const [cookies, setCookies] = useState(0);
   const [clickPower, setClickPower] = useState(1);
   const [autoClickers, setAutoClickers] = useState(0);
   const [achievements, setAchievements] = useState([]);
 
-const [dailyGoal,setDailyGoal] = useState(100);
-const [dailyProgress,setDailyProgress] -useState(0)
-const [lastLongin,setLastLogin] = useState(new Date().toDateString());
+  const [dailyGoal,setDailyGoal] = useState(100);
+  const [dailyProgress, setDailyProgress] = useState(0);
+  cont [lastLogin, setLastLogin] = useState(new Date().toDateString());
 
-const [sound,setSound] = useState();
+const [sound, setSound] = useState();
 
-const scale = useRef(new Animated(1)).current;
-++±¡1
-  // Lista de conquistas baseadas em metas de cookies
-  const achievementsList = [
+const scale = useRef(new Animated(1)).current
+  
+const achievementsList = [
     { id: 1, name: 'Primeiros 10 Cookies!', goal: 10 },
     { id: 2, name: 'Chegou a 100 Cookies!', goal: 100 },
     { id: 3, name: '1.000 Cookies? Impressionante!', goal: 1000 },
-    { id: 4, name: '5 Auto-Clickers!', goal: 5, type: 'autoClicker' },
+    { id: 4, name: '5 Auto-Clickers!', goal:  type: 'autoClicker' },
     { id: 5, name: 'Clique Poderoso 10+', goal: 10, type: 'clickPower' },
   ];
 
-async function playSound() {
+ async function playSound() {
 const {sound} = await Audio.Sound.createAsync(
-require('./assets/click-sound.mp3'l
-);
-useEffect(() => {
+require('./assets/click-sound.mp3'));
+ useEffect(() =>{
 setSound(sound);
-return sound ? () =>
-sound.unloadAsync() : undefined;
-}, [sound])
-
-const pulseAnimation = () => {
-Animated.sequence([
-Animated.timing(scale, {
-toValue: 1.2,
-duration: 100,
-useNativeDriver: true,
-})
-Animated.timing(scaleq0⁰lpp
 
 
-  const handleClick = () => {
+
+    const handleClick = () => {
     setCookies(cookies + clickPower);
   };
-    setDailyProgress(prev => prev +p clickPower);
-
 
   const buyUpgrade = () => {
     if (cookies >= 10) {
@@ -92,25 +76,30 @@ Animated.timing(scaleq0⁰lpp
     });
   }, [cookies, autoClickers, clickPower]);
 
-  useEffect(() => {
+    useEffect(() => {
 const interval = setInterval(() => {
-  const today = new Date().toDateString();
-  if (today !== lastLogin) {
-    setLastLogin(today);
+  const today = new Date().toDatestring();
+if (today !== lastLogin) {
+  setLastLogin(today);
+  setDailyProgress(0);
+  setDailyGoal(Math.floor() *100) +50);
+};
+  if (dailyProgress >=dailyGoal) [
+    Alert.alert('Parabéns!', 'Você completou a meta diária');
     setDailyProgress(0);
-    setDailyGoal(Math.floor(Math.random() * 100) + 50);
-  };
-    if (dailyProgress >= dailyGoal) {
-      Alert.alert('Parabéns!', 'Você completou a meta diária!');
-      setDailyProgress(0);
     };
   });
+
+
+
 return (
-<View style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.text}>Cookies: {cookies}</Text>
       <Text style={styles.text}>Poder de Clique: {clickPower}</Text>
       <Text style={styles.text}>Auto-Clickers: {autoClickers}</Text>
-
+      <Text styles={styles.text}>Meta Diária:  {dailyGoal} cookies</Text>
+    <Text
+    
       <TouchableOpacity style={styles.button} onPress={handleClick}>
         <Text style={styles.buttonText}>Clique para ganhar cookies!</Text>
       </TouchableOpacity>
